@@ -1,228 +1,228 @@
 ﻿using System;
 
-namespace home6
+namespace homework_6_1
 {
     class Program
     {
-       
-        static void Main(string[] args)
+        struct Problem
         {
+            public string Message;
 
-            Console.WriteLine("ORDER FOOD ONLINE");
-            Console.WriteLine();
-            Console.WriteLine(" push 1 => Hungry   ");
-            Console.WriteLine(" push in addition => Not hungry ");
-            Console.WriteLine();
-            Console.Write("Can input 1 and 2 only :");
-            
-            int chooseapp;
-            int Hungry;
-            int i = 0;
+            public int Answer;
 
-            while (i != 1)
+            public Problem(string message, int answer)
             {
-                int.TryParse(Console.ReadLine(), out Hungry);
+                Message = message;
+                Answer = answer;
+            }
+        }
+        enum Difficulty
+        {
+            Easy,
+            Normal,
+            Hard
+        }
+        static void Menu(double ScoreNow,int Difficultypass)
+        {
+            
+            int page;
+            int a = 0;
+            double Qc = 0;
+            while (a != 1)
+            {
+                Console.Write(" Input your Menu : ");
+                int.TryParse(Console.ReadLine(), out page);
 
-                if (Hungry == 1)
+                if (page == 0)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("App Food panda => Push 1");
-                    Console.WriteLine("App Line man => Push 2");
-                    Console.WriteLine("App Uber Eats => Push 3");
-                    Console.WriteLine("App Grab food => Push 4");
-                    Console.WriteLine("App Get food => Push 5");
-                    Console.WriteLine();
-                    Console.Write("Select food apps :");
-                    i = 1;
+                    Console.WriteLine("Play games");
+                    a = 1;
+                    Console.Write("Input your Difficulty :");
+                    Difficultypass = int.Parse(Console.ReadLine());
+                    page = 2 * Difficultypass + 3;
+
+                    if (Difficultypass == 0)
+                    {
+                        long Datatime = DateTimeOffset.Now.ToUnixTimeSeconds();
+                        Console.WriteLine(Datatime);
+
+
+                        Console.WriteLine("Difficulty is Easy");
+                        for (int i = 1; i <= page; i++)
+                        {
+
+                            Problem[] GenerateRandomProblemsArray;
+                            GenerateRandomProblemsArray = GenerateRandomProblems(page);
+                            Console.WriteLine("Message :" + GenerateRandomProblemsArray[0].Message);
+                            int keep = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Answer :" + GenerateRandomProblemsArray[0].Answer);
+                            if (keep == GenerateRandomProblemsArray[0].Answer)
+                            {
+                                Qc = Qc + 1;
+                            }
+                        }
+                        Console.WriteLine("Qc : " + Qc);
+                        long Datatime1 = DateTimeOffset.Now.ToUnixTimeSeconds();
+                        Console.WriteLine(Datatime1);
+
+                        ScoreNow = ScoreNow + ((Qc / page) * ((25 - Math.Pow(Difficultypass, 2))
+                                   / Math.Max(Datatime1 - Datatime, 25 - Math.Pow(Difficultypass, 2)))
+                                   * (Math.Pow(2 * Difficultypass + 1, 2)));
+
+                        Console.WriteLine("Score :" + ScoreNow);
+                        Menu(ScoreNow, Difficultypass);
+                    }
+                    else if (Difficultypass == 1)
+                    {
+                        long Datatime = DateTimeOffset.Now.ToUnixTimeSeconds();
+                        Console.WriteLine(Datatime);
+
+                        Console.WriteLine("Difficulty is Normal");
+                        for (int i = 1; i <= page; i++)
+                        {
+
+                            Problem[] GenerateRandomProblemsArray;
+                            GenerateRandomProblemsArray = GenerateRandomProblems(page);
+                            Console.WriteLine("Message :" + GenerateRandomProblemsArray[0].Message);
+                            int keep = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Answer :" + GenerateRandomProblemsArray[0].Answer);
+                            if (keep == GenerateRandomProblemsArray[0].Answer)
+                            {
+                                Qc = Qc + 1;
+                            }
+                        }
+                        Console.WriteLine("Qc : " + Qc);
+                        long Datatime1 = DateTimeOffset.Now.ToUnixTimeSeconds();
+                        Console.WriteLine(Datatime1);
+
+                        ScoreNow = ScoreNow + ((Qc / page) * ((25 - Math.Pow(Difficultypass, 2))
+                                   / Math.Max(Datatime1 - Datatime, 25 - Math.Pow(Difficultypass, 2)))
+                                   * (Math.Pow(2 * Difficultypass + 1, 2)));
+                        Console.WriteLine("Score :" + ScoreNow);
+                        Menu(ScoreNow, Difficultypass);
+                    }
+                    else if (Difficultypass == 2)
+                    {
+                        long Datatime = DateTimeOffset.Now.ToUnixTimeSeconds();
+                        Console.WriteLine(Datatime);
+
+
+                        Console.WriteLine("Difficulty is Easy");
+                        for (int i = 1; i <= page; i++)
+                        {
+
+                            Problem[] GenerateRandomProblemsArray;
+                            GenerateRandomProblemsArray = GenerateRandomProblems(page);
+                            Console.WriteLine("Message :" + GenerateRandomProblemsArray[0].Message);
+                            int keep = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Answer :" + GenerateRandomProblemsArray[0].Answer);
+                            if (keep == GenerateRandomProblemsArray[0].Answer)
+                            {
+                                Qc = Qc + 1;
+                            }
+                        }
+                        Console.WriteLine("Qc : " + Qc);
+                        long Datatime1 = DateTimeOffset.Now.ToUnixTimeSeconds();
+                        Console.WriteLine(Datatime1);
+
+                        ScoreNow = ScoreNow + ((Qc / page) * ((25 - Math.Pow(Difficultypass, 2))
+                                   / Math.Max(Datatime1 - Datatime, 25 - Math.Pow(Difficultypass, 2)))
+                                   * (Math.Pow(2 * Difficultypass + 1, 2)));
+                        Console.WriteLine("Score :" + ScoreNow);
+                        Menu(ScoreNow, Difficultypass);
+                    }
                 }
-                else if (Hungry == 2)
+                else if (page == 1)
                 {
-                    Console.WriteLine("Not hungry");
-                    i = 2;
+                    Console.WriteLine("Set up");
+                    a = 1;
+                    Console.WriteLine(" YOUR LEVEL. ");
+                    Console.WriteLine(" Difficulty 0 = Easy ");
+                    Console.WriteLine(" Difficulty 1 = Normal ");
+                    Console.WriteLine(" Difficulty 2 = Hard ");
+                    Console.WriteLine();
+                    int Difficulty;
+                    int i = 0;
+
+                    Console.Write(" Score Now : 0 ,");
+                    Console.Write(" Input your Difficulty : ");
+
+                    while (i != 1)
+                    {
+                        int.TryParse(Console.ReadLine(), out Difficulty);
+
+                        if (Difficulty == 0)
+                        {
+                            Console.WriteLine("Your difficulty easy");
+                            i = 1;
+                            Menu(ScoreNow, Difficultypass);
+                        }
+                        else if (Difficulty == 1)
+                        {
+                            Console.WriteLine("Your difficulty Normal");
+                            i = 1;
+                            Menu(ScoreNow, Difficultypass);
+                        }
+                        else if (Difficulty == 2)
+                        {
+                            Console.WriteLine("Your difficulty Hard");
+                            i = 1;
+                            Menu(ScoreNow, Difficultypass);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please input 0 OR 1 OR 2 Only.");
+                            Console.Write(" Input your Difficulty : ");
+                            i = 2;
+                        }
+                    }
+                }
+                else if (page == 2)
+                {
+                    Console.WriteLine("Exit the program");
+                    a = 1;
                 }
                 else
                 {
-                    Console.Write("input 1 and 2 only :");
+                    Console.WriteLine("Please input Number 0 - 2.");
+                    Console.Write(" Input your Number : ");
+                    Console.WriteLine();
+                    a = 2;
                 }
             }
-
-            chooseapp = int.Parse(Console.ReadLine());
-            if (chooseapp == 1)
-            {
-                FOODPANDA();
-            }
-            else if (chooseapp == 2)
-            {
-                LINEMAN();
-            }
-            else if (chooseapp == 3)
-            {
-                UberEats();
-            }
-            else if (chooseapp == 4)
-            {
-                Grabfood();
-            }
-            else if (chooseapp == 5)
-            {
-                Getfood();
-            }
-            
-
         }
-        static void FOODPANDA()
+
+        static void Main(string[] args)
         {
-            
-            Console.WriteLine("APP FOOD PANDA");
-            Console.WriteLine();
-            Console.WriteLine("MUNU FOOD");
-            Console.Write("INPUT NAME FOOD IN ENGLISH  :");
-            string inputnamefood = Console.ReadLine();
-            
-            Console.WriteLine("push 0 => Confirm order");
-            Console.WriteLine("push 1 => Cancel order");
-            int Confirm = int.Parse(Console.ReadLine());
-            
-            if (Confirm == 0)
-            {
-                Console.WriteLine("The food will be delivered soon.");
-
-            }
-            else if (Confirm == 1)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Choose new food");
-                FOODPANDA();
-            }
-            else if (Confirm > 1)
-            {
-                Console.WriteLine("Please input 0 or 1");
-                FOODPANDA();
-            }
+            int Difficultypass = 0;
+            double ScoreNow = 0;
+            Difficulty level = 0;
+            Console.WriteLine(" Score: {0}, Difficulty: {1} ", ScoreNow, level);
+            Menu(ScoreNow, Difficultypass);
         }
-        static void LINEMAN()
+        static Problem[] GenerateRandomProblems(int numProblem)
         {
-            
-            Console.WriteLine();
-            Console.WriteLine("APP LINE MAN");
-            Console.WriteLine();
-            Console.WriteLine("MUNU FOOD");
-            Console.Write("INPUT NAME FOOD IN ENGLISH :");
-            string inputnamefood = Console.ReadLine();
+            Problem[] randomProblems = new Problem[numProblem];
+            Random rnd = new Random();
+            int x, y;
 
-            Console.WriteLine("push 0 => Confirm order");
-            Console.WriteLine("push 1 => Cancel order");
-            int Confirm = int.Parse(Console.ReadLine());
-
-            if (Confirm == 0)
+            for (int i = 0; i < numProblem; i++)
             {
-                Console.WriteLine("The food will be delivered soon." );
-
-            }
-            else if (Confirm == 1)
-            {
-                Console.WriteLine("Choose new food");
-                LINEMAN();
-            }
-            else if (Confirm > 1)
-            {
-                Console.WriteLine("Please input 0 or 1");
-                LINEMAN();
-            }
+                x = rnd.Next(50);
+                y = rnd.Next(50);
+                if (rnd.NextDouble() >= 0.5)
+                    randomProblems[i] =
+                    new Problem(String.Format("{0} + {1} = ?", x, y), x + y);
+                else
+                    randomProblems[i] =
+                    new Problem(String.Format("{0} - {1} = ?", x, y), x - y);
+            } 
+            return randomProblems;
         }
-        static void UberEats()
-        {
-            
-            Console.WriteLine();
-            Console.WriteLine("APP UBER EATS");
-            Console.WriteLine();
-            Console.WriteLine("MUNU FOOD");
-            Console.Write("INPUT NAME FOOD IN ENGLISH  :");
-            string inputnamefood = Console.ReadLine();
 
-            Console.WriteLine("push 0 => Confirm order");
-            Console.WriteLine("push 1 => Cancel order");
-            int Confirm = int.Parse(Console.ReadLine());
 
-            if (Confirm == 0)
-            {
-                Console.WriteLine("The food will be delivered soon.");
 
-            }
-            else if (Confirm == 1)
-            {
-                Console.WriteLine("Choose new food");
-                UberEats();
-            }
-            else if (Confirm > 1)
-            {
-                Console.WriteLine("Please input 0 or 1");
-                UberEats();
-            }
-        }
-        static void Grabfood()
-        {
-            
-            Console.WriteLine();
-            Console.WriteLine("APP GRAB FOOD");
-            Console.WriteLine();
-            Console.WriteLine("MUNU FOOD");
-            Console.Write("INPUT NAME FOOD IN ENGLISH  :");
-            string inputnamefood = Console.ReadLine();
-
-            Console.WriteLine("push 0 => Confirm order");
-            Console.WriteLine("push 1 => Cancel order");
-            int Confirm = int.Parse(Console.ReadLine());
-
-            if (Confirm == 0)
-            {
-                Console.WriteLine("The food will be delivered soon.");
-
-            }
-            else if (Confirm == 1)
-            {
-                Console.WriteLine("Choose new food");
-                Grabfood();
-            }
-            else if (Confirm > 1)
-            {
-                Console.WriteLine("Please input 0 or 1");
-                Grabfood();
-            }
-        }
-        static void Getfood()
-        {
-            
-            Console.WriteLine();
-            Console.WriteLine("APP GET FOOD");
-            Console.WriteLine();
-            Console.WriteLine("MUNU FOOD");
-            Console.Write("INPUT NAME FOOD IN ENGLISH :");
-            string inputnamefood = Console.ReadLine();
-
-            Console.WriteLine("push 0 => Confirm order");
-            Console.WriteLine("push 1 => Cancel order");
-            int Confirm = int.Parse(Console.ReadLine());
-
-            if (Confirm == 0)
-            {
-                Console.WriteLine("The food will be delivered soon.");
-
-            }
-            else if (Confirm == 1)
-            {
-                Console.WriteLine("Choose new food");
-                Getfood();
-            }
-            else if (Confirm > 1)
-            {
-                Console.WriteLine("Please input 0 or 1");
-                Getfood();
-            }
-        }
     }
 }
-
-   
-
+    
 
